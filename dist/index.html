@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <title>Interview Ready</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="https://cdn.jsdelivr.net/pyodide/v0.27.0/full/pyodide.js"></script>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="Interview Ready home"><span class="brand-mark">&lt;/&gt;</span> interview<span>ready</span></a>
+      <nav aria-label="Main navigation"><button class="nav-link active" data-view="practice">Practice</button><button class="nav-link" data-view="path">Path</button><button class="nav-link" data-view="progress">Progress</button></nav>
+      <div class="streak" aria-label="Current practice streak"><span aria-hidden="true">◆</span> 0 day streak</div>
+    </header>
+    <main>
+      <section class="workspace" id="practice-view">
+        <aside class="sidebar" aria-label="Problem list">
+          <div class="sidebar-top"><div><p class="eyebrow">YOUR TRACK</p><h1>Internship core</h1></div><button class="filter-button" id="filterButton" aria-label="Filter problems">☷</button></div>
+          <div class="progress-row"><span id="progressText">0 / 42 complete</span><div class="progress-track"><div id="progressBar"></div></div></div>
+          <label class="search"><span aria-hidden="true">⌕</span><input id="problemSearch" placeholder="Search problems" /></label>
+          <div class="category-list" id="problemList"></div>
+        </aside>
+        <section class="problem-pane" aria-live="polite">
+          <div class="problem-toolbar"><span id="problemNumber">1.</span><span class="difficulty easy" id="difficulty">Easy</span><span class="topic-tag" id="topic">Arrays & Hashing</span><button class="icon-button" id="bookmark" aria-label="Bookmark problem">☆</button></div>
+          <article id="problemStatement"></article>
+          <section class="examples"><h2>Examples</h2><div id="examples"></div></section>
+          <section class="constraints"><h2>Constraints</h2><ul id="constraints"></ul></section>
+          <details class="hint-box"><summary>Hint <span>Reveal only when you need it</span></summary><p id="hint"></p></details>
+        </section>
+        <section class="editor-pane">
+          <div class="editor-header"><div class="language-select">Python 3 <span>⌄</span></div><span id="runtimeStatus" class="runtime-status">Python runner ready on demand</span></div>
+          <div class="editor-wrap"><div class="line-numbers" id="lineNumbers" aria-hidden="true"></div><textarea id="codeEditor" aria-label="Python code editor" spellcheck="false"></textarea></div>
+          <div class="console" id="console" role="status"><span class="console-label">Console</span><pre id="consoleOutput">Write your solution, then Run to test it against the visible cases.</pre></div>
+          <div class="editor-actions"><button class="secondary-button" id="resetButton">Reset code</button><div><button class="secondary-button" id="runButton">Run</button><button class="primary-button" id="submitButton">Submit</button></div></div>
+        </section>
+      </section>
+      <section class="view-section hidden" id="path-view"><div class="page-heading"><p class="eyebrow">A LIGHTWEIGHT ROUTE</p><h2>Interview-ready, without making this your whole week.</h2><p>Three focused sessions a week is enough. Each completed problem returns automatically for spaced practice.</p></div><div class="path-grid" id="pathGrid"></div></section>
+      <section class="view-section hidden" id="progress-view"><div class="page-heading"><p class="eyebrow">PROGRESS</p><h2>Build recall, not a solved-count.</h2><p>Your status is stored only in this browser. Mark a problem complete only when you can derive, code, and explain it without meaningful help.</p></div><div class="stats-grid"><div><span id="solvedCount">0</span><p>mastered</p></div><div><span id="yellowCount">0</span><p>needs re-solve</p></div><div><span id="nextReview">—</span><p>next review</p></div></div></section>
+    </main>
+    <template id="problemItemTemplate"><button class="problem-item"><span class="status-dot"></span><span class="item-number"></span><span class="item-title"></span></button></template>
+  </body>
+</html>
